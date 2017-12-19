@@ -14,10 +14,10 @@ def main():
     #   Uncomment only 1 test at a time as you develop your code.
     # --------------------------------------------------------------
 
-    # run_test_simple_t()
-    # run_test_set_colors()
-    # run_test_move_by()
-    # run_test_clone()
+    run_test_simple_t()
+    run_test_set_colors()
+    run_test_move_by()
+    run_test_clone()
 
 
 def run_test_simple_t():
@@ -135,10 +135,6 @@ class CapitalT(object):
           :type letter_thickness:   int
         """
 
-        self.intersection = intersection_center
-        self.width = width
-        self.height = height
-        self.letter_thickness = letter_thickness
         hCorn1 = rg.Point(intersection_center.x - (width / 2), intersection_center.y + (letter_thickness / 2))
         hCorn2 = rg.Point(intersection_center.x + (width / 2), intersection_center.y - (letter_thickness / 2))
         vCorn1 = rg.Point(intersection_center.x - (letter_thickness / 2), intersection_center.y + height - (letter_thickness / 2))
@@ -147,8 +143,13 @@ class CapitalT(object):
         self.h_rect = rg.Rectangle(hCorn1, hCorn2)
         self.v_rect = rg.Rectangle(vCorn1, vCorn2)
 
+        self.intersection = intersection_center
+        self.width = width
+        self.height = height
+        self.letter_thickness = letter_thickness
+
         # --------------------------------------------------------------
-        # TODO: 3.
+        # Done: 3.
         #   READ the above specification, including the Example.
         #   Implement this method
         #   Note: you will need to also implement attach_to before testing
@@ -172,11 +173,11 @@ class CapitalT(object):
         Type hints:
           :type window: rg.RoseWindow
         """
-        
+
         self.h_rect.attach_to(window)
         self.v_rect.attach_to(window)
         # --------------------------------------------------------------
-        # TODO: 4.
+        # Done: 4.
         #   READ the above specification, including the Example.
         #   Implement and test this method by looking at the console and
         #     the graphics window (compare it to simple_t.pdf)
@@ -202,8 +203,16 @@ class CapitalT(object):
           :type fill_color: str
           :type outline_color: str
         """
+
+        self.h_rect.fill_color = fill_color
+        self.v_rect.fill_color = fill_color
+        self.h_rect.outline_color = outline_color
+        self.v_rect.outline_color = outline_color
+
+        self.fill_color = fill_color
+        self.outline_color = outline_color
         # --------------------------------------------------------------
-        # TODO: 5.
+        # Done: 5.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
@@ -232,8 +241,17 @@ class CapitalT(object):
           :type dx: int
           :type dy: int
         """
+        self.h_rect.corner_1.x += dx
+        self.h_rect.corner_1.y += dy
+        self.h_rect.corner_2.x += dx
+        self.h_rect.corner_2.y += dy
+        self.v_rect.corner_1.x += dx
+        self.v_rect.corner_1.y += dy
+        self.v_rect.corner_2.x += dx
+        self.v_rect.corner_2.y += dy
+
         # --------------------------------------------------------------
-        # TODO: 6.
+        # Done: 6.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
@@ -260,8 +278,12 @@ class CapitalT(object):
         Type hints:
           :rtype: CapitalT
         """
+
+        T = CapitalT(self.intersection, self.width, self.height, self.letter_thickness)
+        T.set_colors(self.fill_color, self.outline_color)
+        return T
         # --------------------------------------------------------------
-        # TODO: 7.
+        # Done: 7.
         #   READ the above specification, including the Example.
         #   Implement and test this method by uncommenting the appropriate
         #     run_test method in main. Compare the graphics window to
